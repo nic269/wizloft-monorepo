@@ -34,6 +34,12 @@
 	grid-row-start: 2;
 }
 
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 .main ol {
 	font-family: var(--font-geist-mono);
 	padding-left: 0;
@@ -66,7 +72,7 @@
 	border-radius: 128px;
 	height: 48px;
 	padding: 0 20px;
-	font-family: var(--font-geist-sans);
+	font-family: var(--font-sans);
 	border: 1px solid transparent;
 	transition:
 		background 0.2s,
@@ -97,7 +103,7 @@ button.secondary {
 	border-radius: 128px;
 	height: 48px;
 	padding: 0 20px;
-	font-family: var(--font-geist-sans);
+	font-family: var(--font-sans);
 	border: 1px solid transparent;
 	transition:
 		background 0.2s,
@@ -116,7 +122,7 @@ button.secondary {
 }
 
 .footer {
-	font-family: var(--font-geist-sans);
+	font-family: var(--font-sans);
 	grid-row-start: 3;
 	display: flex;
 	gap: 24px;

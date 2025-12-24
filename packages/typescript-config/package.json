@@ -1,8 +1,16 @@
 {
   "name": "@wizloft/typescript-config",
-  "version": "0.0.0",
-  "private": true,
+  "author": "Anh Nguyen",
   "license": "MIT",
+  "description": "Wizloft TypeScript configuration",
+  "keywords": [
+    "typescript",
+    "configuration",
+    "react",
+    "nextjs"
+  ],
+  "version": "0.1.0",
+  "private": true,
   "publishConfig": {
     "access": "public"
   }

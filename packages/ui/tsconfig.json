@@ -1,8 +1,11 @@
 {
-	"extends": "@wizloft/typescript-config/react-library.json",
-	"compilerOptions": {
-		"outDir": "dist"
-	},
-	"include": ["src"],
-	"exclude": ["node_modules", "dist"]
+  "extends": "@wizloft/typescript-config/react-library.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@wizloft/ui/*": ["./src/*"]
+    }
+  },
+  "include": ["."],
+  "exclude": ["node_modules", "dist"]
 }
