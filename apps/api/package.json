@@ -1,0 +1,47 @@
+{
+  "name": "api",
+  "author": "Anh Nguyen",
+  "license": "MIT",
+  "description": "Wizloft API",
+  "keywords": [
+    "api",
+    "express",
+    "nodejs"
+  ],
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "tsup --watch --onSuccess \"node dist/index.cjs\"",
+    "build": "tsup",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src/ --max-warnings 0",
+    "test": "jest --detectOpenHandles"
+  },
+  "jest": {
+    "preset": "@wizloft/jest-presets/node"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.1",
+    "cors": "^2.8.5",
+    "express": "5.2.1",
+    "morgan": "^1.10.1"
+  },
+  "devDependencies": {
+    "@jest/globals": "^30.2.0",
+    "@types/body-parser": "^1.19.6",
+    "@types/cors": "^2.8.19",
+    "@types/express": "5.0.6",
+    "@types/morgan": "^1.9.10",
+    "@types/node": "^25.0.3",
+    "@types/supertest": "^6.0.3",
+    "@wizloft/jest-presets": "workspace:*",
+    "@wizloft/typescript-config": "workspace:*",
+    "eslint": "^9.39.2",
+    "jest": "^30.2.0",
+    "supertest": "^7.1.4",
+    "tsup": "^8.5.1",
+    "typescript": "5.9.3"
+  }
+}
