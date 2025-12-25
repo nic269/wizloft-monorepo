@@ -16,7 +16,7 @@
     "dev": "tsup --watch --onSuccess \"node dist/index.cjs\"",
     "build": "tsup",
     "check-types": "tsc --noEmit",
-    "lint": "eslint src/ --max-warnings 0",
+    "lint": "biome check --write",
     "test": "jest --detectOpenHandles"
   },
   "jest": {
@@ -38,7 +38,7 @@
     "@types/supertest": "^6.0.3",
     "@wizloft/jest-presets": "workspace:*",
     "@wizloft/typescript-config": "workspace:*",
-    "eslint": "^9.39.2",
+    "@wizloft/biome-config": "workspace:*",
     "jest": "^30.2.0",
     "supertest": "^7.1.4",
     "tsup": "^8.5.1",

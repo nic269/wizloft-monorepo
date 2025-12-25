@@ -9,7 +9,7 @@
 		"react",
 		"nextjs"
 	],
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"private": true,
 	"scripts": {
 		"dev": "echo 'Add dev script here'",
@@ -20,6 +20,8 @@
 	"exports": {
 		"./base": "./base.json",
 		"./next-js": "./next.json",
-		"./react-internal": "./react-internal.json"
+		"./react-internal": "./react-internal.json",
+		"./node": "./node.json",
+		"./library": "./library.json"
 	}
 }
