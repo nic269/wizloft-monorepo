@@ -68,6 +68,10 @@
 		},
 		"includes": ["**", "**/.*.js", "**/node_modules/", "**/dist/"]
 	},
+	"files": {
+		"ignoreUnknown": false,
+		"includes": ["**", "!**/node_modules", "!**/dist", "!**/build", "!**/out", "!**/generated"]
+	},
 	"javascript": { "globals": ["React", "JSX"] },
 	"overrides": [{}]
 }
