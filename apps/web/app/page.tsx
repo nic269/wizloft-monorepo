@@ -1,22 +1,20 @@
 "use client";
-import { Button } from "@wizloft/ui/components/button";
-import { toast } from "@wizloft/ui/components/sonner";
 import {
   AlertDialog,
-  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
-  AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@wizloft/ui/components/alert-dialog"
-import { FieldDescription, FieldLabel } from "@wizloft/ui/components/field";
-
-import Image, { type ImageProps } from "next/image";
-import styles from "./page.module.css";
+import { Button } from "@wizloft/ui/components/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@wizloft/ui/components/card";
+import { toast } from "@wizloft/ui/components/sonner";
+import Image, { type ImageProps } from "next/image";
+import { useEffect, useState } from "react";
+import { getUsers } from "./actions";
+import styles from "./page.module.css";
 
 type Props = Omit<ImageProps, "src"> & {
 	srcLight: string;
@@ -35,6 +33,24 @@ const ThemeImage = (props: Props) => {
 };
 
 export default function Home() {
+	const [users, setUsers] = useState<Array<{ id: string; name: string | null; email: string | null; emailVerified: Date | null }>>([]);
+	const [loading, setLoading] = useState(true);
+
+	useEffect(() => {
+		async function fetchUsers() {
+			try {
+				const fetchedUsers = await getUsers();
+				setUsers(fetchedUsers);
+			} catch (error) {
+				console.error("Failed to fetch users:", error);
+				toast.error("Failed to load users");
+			} finally {
+				setLoading(false);
+			}
+		}
+		fetchUsers()
+	}, []);
+
 	return (
 		<div className={styles.page}>
 			<main className={styles.main}>
@@ -55,12 +71,35 @@ export default function Home() {
 						<CardTitle><h2 className="text-2xl font-bold text-center">Wizloft by Anh Nguyen</h2></CardTitle>
 					</CardHeader>
 					<CardContent>
-						<ol>
-							<li>
-								Get started by editing <code>apps/web/app/page.tsx</code>
-							</li>
-							<li>Save and see your changes instantly.</li>
-						</ol>
+						<div className="space-y-4">
+							<ol>
+								<li>
+									Get started by editing <code>apps/web/app/page.tsx</code>
+								</li>
+								<li>Save and see your changes instantly.</li>
+							</ol>
+							<div className="mt-4">
+								<h3 className="text-lg font-semibold mb-2">Users ({users.length})</h3>
+								{loading ? (
+									<p className="text-sm text-muted-foreground">Loading users...</p>
+								) : users.length === 0 ? (
+									<p className="text-sm text-muted-foreground">No users found.</p>
+								) : (
+									<ul className="space-y-2">
+										{users.map((user) => (
+											<li key={user.id} className="text-sm">
+												<div className="flex gap-2">
+													<span className="font-medium">{user.name || "Unnamed"}</span>
+													{user.email && (
+														<span className="text-muted-foreground">({user.email})</span>
+													)}
+												</div>
+											</li>
+										))}
+									</ul>
+								)}
+							</div>
+						</div>
 					</CardContent>
 					<CardFooter className="flex flex-col gap-2">
 						<AlertDialog>
@@ -86,18 +125,6 @@ export default function Home() {
 								</AlertDialogFooter>
 							</AlertDialogContent>
 						</AlertDialog>
-
-						<Button
-							className="w-full"
-							variant="default"
-							size="lg"
-							onClick={() => toast.promise(new Promise((resolve) => setTimeout(resolve, 1000)), {
-								loading: "Loading...",
-								success: "Success!",
-								error: "Error!",
-							})}>
-							Loading alert demo
-						</Button>
 					</CardFooter>
 				</Card>
 			</main>

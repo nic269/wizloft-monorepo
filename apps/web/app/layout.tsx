@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
-import { Raleway } from "next/font/google";
 import { Toaster } from "@wizloft/ui/components/sonner"
+import type { Metadata } from "next";
+import { Raleway } from "next/font/google";
+import localFont from "next/font/local";
 
 import "@wizloft/ui/globals.css";
 import "./globals.css";

@@ -13,10 +13,9 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_DATABASE: wizloft
+      POSTGRES_DATABASE: wizloft_monorepo
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_HOST_AUTH_METHOD: trust
     volumes:
       - database:/var/lib/postgresql/data
-

@@ -1,3 +1,4 @@
+import { prisma } from '@wizloft/database'
 import { json, urlencoded } from 'body-parser'
 import cors from 'cors'
 import express, { type Express } from 'express'
@@ -16,6 +17,10 @@ export const createServer = (): Express => {
     })
     .get('/status', (_, res) => {
       return res.json({ ok: true })
+    })
+    .get('/users', async (_, res) => {
+      const users = await prisma.user.findMany()
+      return res.json(users)
     })
 
   return app

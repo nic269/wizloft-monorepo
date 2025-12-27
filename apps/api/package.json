@@ -39,6 +39,7 @@
     "@wizloft/jest-presets": "workspace:*",
     "@wizloft/typescript-config": "workspace:*",
     "@wizloft/biome-config": "workspace:*",
+    "@wizloft/database": "workspace:*",
     "jest": "^30.2.0",
     "supertest": "^7.1.4",
     "tsup": "^8.5.1",
