@@ -1,4 +1,5 @@
 import { prisma } from '@wizloft/database'
+import { capitalize, formatNumber, pick, unique } from '@wizloft/helpers'
 import { log } from "@wizloft/logger";
 import { json, urlencoded } from 'body-parser'
 import cors from 'cors'
@@ -23,6 +24,17 @@ export const createServer = (): Express => {
       const users = await prisma.user.findMany()
       log("Users fetched", users);
       return res.json(users)
+    })
+    .get('/helpers-demo', (_, res) => {
+      // Demonstrate various helper functions
+      const demo = {
+        capitalize: capitalize('hello world'),
+        formatNumber: formatNumber(1234567),
+        pick: pick({ id: 1, name: 'John', email: 'john@example.com', password: 'secret' }, ['id', 'name']),
+        unique: unique([1, 2, 2, 3, 3, 4]),
+        message: 'Check out the @wizloft/helpers package!'
+      }
+      return res.json(demo)
     })
 
   return app

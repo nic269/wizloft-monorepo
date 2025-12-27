@@ -1,0 +1,52 @@
+{
+	"name": "@wizloft/helpers",
+	"version": "0.1.0",
+	"author": "Anh Nguyen",
+	"license": "MIT",
+	"description": "Wizloft shared helper utilities",
+	"keywords": [
+		"helpers",
+		"utilities",
+		"library"
+	],
+	"type": "module",
+	"private": true,
+	"files": [
+		"dist"
+	],
+	"main": "./dist/es/index.js",
+	"module": "./dist/es/index.js",
+	"types": "./dist/es/index.d.ts",
+	"exports": {
+		".": {
+			"import": {
+				"types": "./dist/es/index.d.ts",
+				"default": "./dist/es/index.js"
+			},
+			"require": {
+				"types": "./dist/cjs/index.d.cts",
+				"default": "./dist/cjs/index.cjs"
+			}
+		}
+	},
+	"scripts": {
+		"build": "bunchee",
+		"dev": "bunchee --watch",
+		"lint": "biome check --write",
+		"check-types": "tsc --noEmit",
+		"test": "jest"
+	},
+	"jest": {
+		"preset": "@wizloft/jest-presets/node"
+	},
+	"devDependencies": {
+		"@jest/globals": "^30.2.0",
+		"@types/node": "^25.0.3",
+		"@wizloft/biome-config": "workspace:*",
+		"@wizloft/jest-presets": "workspace:*",
+		"@wizloft/typescript-config": "workspace:*",
+		"bunchee": "^6.8.0",
+		"jest": "^30.2.0",
+		"typescript": "5.9.3"
+	}
+}

@@ -12,6 +12,7 @@ import { Button } from "@wizloft/ui/components/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@wizloft/ui/components/card";
 import { toast } from "@wizloft/ui/components/sonner";
 import { log } from "@wizloft/logger";
+import { isEmpty } from "@wizloft/helpers";
 import Image, { type ImageProps } from "next/image";
 import { useEffect, useState } from "react";
 import { getUsers } from "./actions";
@@ -42,6 +43,7 @@ export default function Home() {
 			try {
 				const fetchedUsers = await getUsers();
 				setUsers(fetchedUsers);
+				log("Users fetched", fetchedUsers);
 			} catch (error) {
 				console.error("Failed to fetch users:", error);
 				toast.error("Failed to load users");
@@ -51,7 +53,6 @@ export default function Home() {
 		}
 		fetchUsers()
 	}, []);
-	log("Users fetched", users);
 
 	return (
 		<div className={styles.page}>
@@ -84,7 +85,7 @@ export default function Home() {
 								<h3 className="text-lg font-semibold mb-2">Users ({users.length})</h3>
 								{loading ? (
 									<p className="text-sm text-muted-foreground">Loading users...</p>
-								) : users.length === 0 ? (
+								) : isEmpty(users) ? (
 									<p className="text-sm text-muted-foreground">No users found.</p>
 								) : (
 									<ul className="space-y-2">

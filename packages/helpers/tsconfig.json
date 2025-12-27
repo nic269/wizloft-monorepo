@@ -1,0 +1,12 @@
+{
+	"extends": "@wizloft/typescript-config/base.json",
+	"compilerOptions": {
+		"target": "ES2015",
+		"lib": ["ES2015"],
+		"outDir": "./dist",
+		"types": ["jest", "node"],
+		"downlevelIteration": true
+	},
+	"include": ["."],
+	"exclude": ["node_modules", "dist"]
+}

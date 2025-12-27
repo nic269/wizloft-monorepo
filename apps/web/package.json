@@ -23,6 +23,7 @@
     "@wizloft/ui": "workspace:*",
     "@wizloft/database": "workspace:*",
     "@wizloft/logger": "workspace:*",
+    "@wizloft/helpers": "workspace:*",
     "next": "16.1.1",
     "react": "^19.2.3",
     "react-dom": "^19.2.3"
