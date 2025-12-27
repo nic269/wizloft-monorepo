@@ -13,7 +13,7 @@
   "private": true,
   "scripts": {
     "start": "node dist/index.js",
-    "dev": "tsup --watch --onSuccess \"node dist/index.cjs\"",
+    "dev": "tsup --watch --onSuccess \"dotenv -e .env.development -- node dist/index.cjs\"",
     "build": "tsup",
     "check-types": "tsc --noEmit",
     "lint": "biome check --write",
@@ -23,6 +23,8 @@
     "preset": "@wizloft/jest-presets/node"
   },
   "dependencies": {
+    "@wizloft/database": "workspace:*",
+    "@wizloft/logger": "workspace:*",
     "body-parser": "^2.2.1",
     "cors": "^2.8.5",
     "express": "5.2.1",
@@ -39,7 +41,7 @@
     "@wizloft/jest-presets": "workspace:*",
     "@wizloft/typescript-config": "workspace:*",
     "@wizloft/biome-config": "workspace:*",
-    "@wizloft/database": "workspace:*",
+    "dotenv-cli": "^8.0.0",
     "jest": "^30.2.0",
     "supertest": "^7.1.4",
     "tsup": "^8.5.1",

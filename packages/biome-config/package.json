@@ -22,6 +22,7 @@
 		"./next-js": "./next.json",
 		"./react-internal": "./react-internal.json",
 		"./node": "./node.json",
-		"./library": "./library.json"
+		"./library": "./library.json",
+		"./utils": "./utils.json"
 	}
 }

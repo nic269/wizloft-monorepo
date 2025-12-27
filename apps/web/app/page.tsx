@@ -11,6 +11,7 @@ import {
 import { Button } from "@wizloft/ui/components/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@wizloft/ui/components/card";
 import { toast } from "@wizloft/ui/components/sonner";
+import { log } from "@wizloft/logger";
 import Image, { type ImageProps } from "next/image";
 import { useEffect, useState } from "react";
 import { getUsers } from "./actions";
@@ -50,6 +51,7 @@ export default function Home() {
 		}
 		fetchUsers()
 	}, []);
+	log("Users fetched", users);
 
 	return (
 		<div className={styles.page}>
